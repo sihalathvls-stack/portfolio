@@ -1,0 +1,612 @@
+/* ==========================================================
+   1) DESIGN TOKENS: แก้ค่าที่นี่ที่เดียว ทั้งเว็บเปลี่ยนตาม
+   ========================================================== */
+:root {
+  /* สี */
+  --color-bg: #0f1115;
+  --color-surface: #181b22;
+  --color-border: #2a2f3a;
+  --color-text: #e6e8ee;
+  --color-text-muted: #9aa3b2;
+  --color-accent: #7aa2ff;
+  --color-accent-hover: #9bb8ff;
+
+  /* ฟอนต์ */
+  --font-body: "Inter", "Noto Sans lao", system-ui, sans-serif;
+
+  /* ระยะห่าง (ไล่ระดับ) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 4rem;
+
+  /* อื่น ๆ */
+  --radius: 15px;
+  --container-width: 1100px;
+  --header-height: 80px;
+}
+
+/* ==========================================================
+   2) BASE
+   ========================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* เลื่อนนุ่มเมื่อกดลิงก์ #... */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw + 1rem, 3.75rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+  margin-bottom: var(--space-2);
+}
+
+/* ==========================================================
+   3) LAYOUT
+   ========================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;          /* จัดกึ่งกลางแนวนอน */
+  padding-inline: var(--space-3);
+}
+
+.section {
+  padding-block: var(--space-6);
+  scroll-margin-top: var(--header-height); /* กัน Navbar บังหัวข้อตอนเลื่อนมา */
+}
+
+/* ==========================================================
+   4) NAVBAR
+   ========================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(15, 17, 21, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* โลโก้ซ้าย เมนูขวา */
+  align-items: center;
+  min-height: var(--header-height);
+  gap: var(--space-2);
+}
+
+.logo {
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.nav-links a {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: var(--color-text);
+}
+
+.nav-links a.active {
+  color: var(--color-accent);
+} 
+/* ==========================================================
+   5) HERO
+   ========================================================== */
+.hero {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.highlight {
+  color: var(--color-accent);
+}
+
+.hero-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  margin-top: var(--space-2);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+/* ==========================================================
+   6) BUTTONS
+   ========================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #0f1115;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  color: #0f1115;
+}
+
+.btn-outline {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ==========================================================
+   7) FOOTER
+   ========================================================== */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================
+   8) SECTION HELPERS (Lesson 3)
+   ========================================================== */
+.section-intro {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.subheading {
+  font-size: 1.1rem;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+/* ==========================================================
+   9) ABOUT
+   ========================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;   /* คอลัมน์รูป : คอลัมน์ข้อความ = 1 : 2 */
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.about-photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  display: block;
+}
+
+.about-text p + p {
+  margin-top: var(--space-2);
+}
+
+/* ป้ายเครื่องมือ (Chips) */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.tags li {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* จอแคบ: ให้ About เหลือคอลัมน์เดียว (Responsive เต็มรูปแบบอยู่ใน Lesson 4) */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    max-width: 280px;
+  }
+}
+
+/* ==========================================================
+   10) PORTFOLIO GRID + CARD
+   ========================================================== */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-3);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;   /* ให้มุมโค้งครอบรูปด้านในด้วย */
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card img {
+  display: block; 
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.card-body {
+  padding: var(--space-3);
+}
+
+.card-category {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  margin: 0.25rem 0 var(--space-1);
+}
+
+.card-text {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================
+   10) CONTACT (Lesson 4)
+   ========================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  color: var(--color-text);
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.contact-card:hover {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+}
+
+.contact-label {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.contact-value {
+  font-weight: 600;
+  overflow-wrap: anywhere;   /* ลิงก์ยาวจะตัดบรรทัด ไม่ดันล้นจอ */
+}
+
+/* ==========================================================
+   11) FOOTER & ACCESSIBILITY (Lesson 4)
+   ========================================================== */
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.back-to-top {
+  color: var(--color-text-muted);
+}
+
+.back-to-top:hover {
+  color: var(--color-text);
+}
+
+/* กรอบโฟกัสสำหรับผู้ใช้คีย์บอร์ด */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card {
+    transition: none;
+  }
+  .contact-card:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================
+   12) RESPONSIVE: ต้องอยู่ท้ายไฟล์เสมอ เพื่อทับกฎด้านบน
+   ========================================================== */
+
+/* Tablet และเล็กกว่า */
+@media (max-width: 768px) {
+  :root {
+    --space-6: 3rem;          /* ระยะห่างระหว่าง Section ลดลง ทุกจุดที่ใช้ตัวแปรนี้ปรับตาม */
+  }
+
+  .nav-links {
+    gap: var(--space-2);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* โทรศัพท์ */
+@media (max-width: 480px) {
+  :root {
+    --space-6: 2.5rem;
+  }
+
+  /* เมนูแคบเกินไป ซ่อน Home ชั่วคราว (โลโก้ลิงก์ไป Home อยู่แล้ว)
+     เราจะทำเมนู Hamburger ที่สมบูรณ์ใน Lesson 5 */
+  .nav-links li:first-child {
+    display: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+  }
+
+  /* ปุ่มใน Hero เต็มความกว้าง กดง่ายด้วยนิ้ว */
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    text-align: center;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================================
+   13) JAVASCRIPT-DRIVEN UI (Lesson 5)
+   ========================================================== */
+
+/* ปุ่ม Hamburger: ซ่อนบนจอกว้าง */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+/* แปลง 3 ขีดเป็นเครื่องหมาย X เมื่อเมนูเปิด */
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-toggle:focus-visible,
+.filter-btn:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ลิงก์เมนูที่ตรงกับ Section ปัจจุบัน */
+.nav-links a.active {
+  color: var(--color-accent);
+}
+
+/* ปุ่มกรองผลงาน */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.filter-btn {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.filter-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+.filter-btn.is-active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #0f1115;
+}
+
+.filter-empty {
+  color: var(--color-text-muted);
+  margin-top: var(--space-3);
+}
+
+/* ถ้าตั้ง display ให้ Element ใดแล้ว ต้องทำให้ hidden ยังใช้ได้ */
+.card[hidden],
+.filter-empty[hidden] {
+  display: none;
+}
+
+/* ซ่อน/แสดงเมนูบนจอเล็ก (ต้องวางหลังกฎ Lesson 4 เพื่อทับของเดิม) */
+@media (max-width: 768px) {
+  .js .nav-toggle {
+    display: flex;
+  }
+
+  .navbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .js .nav-links {
+    display: none;
+    flex-direction: column;
+    flex-basis: 100%;
+    gap: 0;
+    padding-bottom: var(--space-2);
+  }
+
+  .js .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle-bar,
+  .filter-btn {
+    transition: none;
+  }
+}
+
+/* ==========================================================
+   14) TESTING & ACCESSIBILITY FIXES (Lesson 6)
+   ========================================================== */
+
+/* Skip Link: ซ่อนไว้นอกจอ โผล่เมื่อได้รับโฟกัสจากคีย์บอร์ด */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-2);
+  z-index: 200;
+  background-color: var(--color-accent);
+  color: #0f1115;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: var(--space-1);
+  color: #0f1115;
+}
+
+/* ปุ่มกรองใน Section Portfolio ต้องมีเนื้อที่พอกดด้วยนิ้ว */
+.filter-btn {
+  min-height: 44px;
+}
